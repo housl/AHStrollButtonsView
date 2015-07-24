@@ -15,6 +15,7 @@
 		2FA2685E1B58D2FC00C441D8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FA2685C1B58D2FC00C441D8 /* LaunchScreen.xib */; };
 		2FA2686A1B58D2FC00C441D8 /* AHStrollButtonsViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA268691B58D2FC00C441D8 /* AHStrollButtonsViewTests.m */; };
 		2FA268751B58D31000C441D8 /* AHScrollButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA268741B58D31000C441D8 /* AHScrollButtonsView.m */; };
+		2FAB1A5D1B62277900CDC16D /* YAScrollSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB1A5C1B62277900CDC16D /* YAScrollSegmentControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		2FA268691B58D2FC00C441D8 /* AHStrollButtonsViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AHStrollButtonsViewTests.m; sourceTree = "<group>"; };
 		2FA268731B58D31000C441D8 /* AHScrollButtonsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHScrollButtonsView.h; sourceTree = "<group>"; };
 		2FA268741B58D31000C441D8 /* AHScrollButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHScrollButtonsView.m; sourceTree = "<group>"; };
+		2FAB1A5B1B62277900CDC16D /* YAScrollSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAScrollSegmentControl.h; sourceTree = "<group>"; };
+		2FAB1A5C1B62277900CDC16D /* YAScrollSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAScrollSegmentControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,8 @@
 		2FA2684C1B58D2FC00C441D8 /* AHStrollButtonsView */ = {
 			isa = PBXGroup;
 			children = (
+				2FAB1A5B1B62277900CDC16D /* YAScrollSegmentControl.h */,
+				2FAB1A5C1B62277900CDC16D /* YAScrollSegmentControl.m */,
 				2FA268731B58D31000C441D8 /* AHScrollButtonsView.h */,
 				2FA268741B58D31000C441D8 /* AHScrollButtonsView.m */,
 				2FA268511B58D2FC00C441D8 /* AppDelegate.h */,
@@ -227,6 +232,7 @@
 				2FA268561B58D2FC00C441D8 /* ViewController.m in Sources */,
 				2FA268531B58D2FC00C441D8 /* AppDelegate.m in Sources */,
 				2FA268751B58D31000C441D8 /* AHScrollButtonsView.m in Sources */,
+				2FAB1A5D1B62277900CDC16D /* YAScrollSegmentControl.m in Sources */,
 				2FA268501B58D2FC00C441D8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +430,7 @@
 				2FA2686F1B58D2FC00C441D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2FA268701B58D2FC00C441D8 /* Build configuration list for PBXNativeTarget "AHStrollButtonsViewTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +439,7 @@
 				2FA268721B58D2FC00C441D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

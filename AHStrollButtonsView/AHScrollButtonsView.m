@@ -19,6 +19,9 @@
 @property (nonatomic, strong) NSMutableArray   *buttonTitles;
 @property (nonatomic, assign) NSUInteger    selectedIndex;
 
+@property (nonatomic, strong) UIColor   *sColor;
+@property (nonatomic, strong) UIColor   *nColor;
+
 @end
 
 @implementation AHScrollButtonsView
@@ -32,6 +35,9 @@
         self.buttonWidth = AH_BUTTON_WIDTH;
         self.buttonSpace = AH_BUTTON_SPACE;
         self.buttonTitles = [[NSMutableArray alloc] initWithCapacity:5];
+        
+        self.nColor = [UIColor blackColor];
+        self.sColor = [UIColor colorWithRed:235/255.0 green:97/255.0 blue:0/255.0 alpha:1.0];
         
         [self setShowsHorizontalScrollIndicator:NO];
     }
@@ -62,14 +68,14 @@
     for (UIView *one in self.subviews) {
         if ([one isKindOfClass:[UIButton class]]) {
             UIButton *abtn = (UIButton *)one;
-            [abtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [abtn setTitleColor:_nColor forState:UIControlStateNormal];
         }
     }
-
+    
     UIButton *seleBtn = (UIButton *) [self viewWithTag:self.selectedIndex+10000];
     if (seleBtn) {
-        [seleBtn setTitleColor:[UIColor colorWithRed:235/255.0 green:97/255.0 blue:0/255.0 alpha:1.0]
-                     forState:UIControlStateNormal];
+        [seleBtn setTitleColor:_sColor
+                      forState:UIControlStateNormal];
     }
 }
 
@@ -80,6 +86,7 @@
 
 -(void)moveToButtonWithIndex:(NSUInteger)butInedex
 {
+    return;
     NSUInteger tmp = butInedex > 0 ? butInedex : 0;
     tmp = tmp > self.buttonNumber ? self.buttonNumber : tmp;
     float xx = self.frame.size.width * tmp* ((self.buttonWidth+_buttonSpace) / self.frame.size.width) - self.buttonWidth;
@@ -88,6 +95,16 @@
 
 -(void)resetButtonTitles:(NSArray *)titles buttonWidth:(float)width
 {
+    
+    
+    if (!titles || titles.count == 0) {
+        return;
+    }
+    
+    if (width <= 0.0) {
+        width = 60;
+    }
+    
     [self resetScrollView];
     self.buttonWidth = width;
     
@@ -95,23 +112,34 @@
     [self.buttonTitles addObjectsFromArray:titles];
     
     self.buttonNumber = titles.count;
+    
+    BOOL isFull = YES;
+    float gapWidth = 0.0;
+    
     CGFloat contentWidth = self.buttonNumber * (self.buttonWidth + _buttonSpace) - _buttonSpace;
-    [self setContentSize:CGSizeMake(contentWidth, self.frame.size.height)];
+    if (contentWidth <= self.frame.size.width) {
+        gapWidth = (self.frame.size.width - contentWidth)/2;
+        isFull = NO;
+        contentWidth = self.frame.size.width;
+        
+    }
+    
+    [self setContentSize:CGSizeMake(contentWidth+1, self.frame.size.height)];
     
     for (int i = 0; i < self.buttonNumber; ++i) {
-        UIButton *but = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
         [but addTarget:self action:@selector(buttonDownHandle:) forControlEvents:UIControlEventTouchUpInside];
         but.tag = i + 10000;
         CGFloat x = i * (self.buttonWidth + _buttonSpace);
-        [but setFrame:CGRectMake(x, 0, self.buttonWidth, _buttonHeight)];
+        [but setFrame:CGRectMake(x + gapWidth, 0, self.buttonWidth, _buttonHeight)];
         but.titleLabel.numberOfLines = 0;
         but.titleLabel.textAlignment = NSTextAlignmentCenter;
         but.titleLabel.font = [UIFont systemFontOfSize:13];
-        if(i==0){
-            [but setTitleColor:[UIColor colorWithRed:235/255.0 green:97/255.0 blue:0/255.0 alpha:1.0]
+        if(i == self.selectedIndex){
+            [but setTitleColor:_sColor
                       forState:UIControlStateNormal];
         }else{
-            [but setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [but setTitleColor:_nColor forState:UIControlStateNormal];
         }
         [but setBackgroundColor:[UIColor clearColor]];
         NSString *name = [NSString stringWithFormat:@"%@", self.buttonTitles[i]];
@@ -123,19 +151,55 @@
 
 -(void)buttonDownHandle:(UIButton *)sender
 {
-    [self moveToButtonWithIndex:sender.tag - 10000];
     
     UIButton *lastbtn = (UIButton *) [self viewWithTag:self.selectedIndex+10000];
     if (lastbtn) {
-        [lastbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [lastbtn setTitleColor:_nColor forState:UIControlStateNormal];
     }
-    [sender setTitleColor:[UIColor colorWithRed:235/255.0 green:97/255.0 blue:0/255.0 alpha:1.0]
+    [sender setTitleColor:_sColor
                  forState:UIControlStateNormal];
     self.selectedIndex = sender.tag - 10000;
+    [self moveToButtonWithIndex:self.selectedIndex];
     
     if ([self.sbDelegate respondsToSelector:@selector(didSelectedIndex:)]) {
         [self.sbDelegate didSelectedIndex:self.selectedIndex];
     }
 }
+
+-(void)resetSelectedColor:(UIColor *)scolor normalColor:(UIColor *)ncolor
+{
+    self.sColor = scolor;
+    self.nColor = ncolor;
+    
+    for (UIView *one in self.subviews) {
+        if ([one isKindOfClass:[UIButton class]]) {
+            UIButton *abtn = (UIButton *)one;
+            [abtn setTitleColor:_nColor forState:UIControlStateNormal];
+        }
+    }
+    
+    UIButton *seleBtn = (UIButton *) [self viewWithTag:self.selectedIndex+10000];
+    if (seleBtn) {
+        [seleBtn setTitleColor:_sColor
+                      forState:UIControlStateNormal];
+    }
+    
+    
+}
+
+-(void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    
+    NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:self.buttonTitles.count];
+    for (NSString *str in self.buttonTitles) {
+        [arr addObject:str];
+    }
+    
+    [self resetButtonTitles:arr buttonWidth:self.buttonWidth];
+    
+}
+
+
 
 @end

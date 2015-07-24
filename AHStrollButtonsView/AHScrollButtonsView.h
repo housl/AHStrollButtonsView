@@ -29,6 +29,14 @@
 -(void)resetSelectedIndex:(NSUInteger)index;
 
 -(NSUInteger)currentIndex;
+/**
+ *  设置颜色
+ *
+ *  @param scolor 选中颜色
+ *  @param ncolor 普通颜色
+ */
+-(void)resetSelectedColor:(UIColor *)scolor normalColor:(UIColor *)ncolor;
+
 
 @end
 

@@ -9,8 +9,8 @@
 #import "ViewController.h"
 #import "AHScrollButtonsView.h"
 
-@interface ViewController ()<UIScrollViewDelegate>
-
+@interface ViewController ()<UIScrollViewDelegate,AHScrollButtonsViewDelegate>
+@property (nonatomic, strong) AHScrollButtonsView *sbView;
 @end
 
 @implementation ViewController
@@ -19,21 +19,22 @@
     [super viewDidLoad];
 
     float width = self.view.frame.size.width;
-    AHScrollButtonsView *sbView = [[AHScrollButtonsView alloc] initWithFrame:CGRectMake(0, 100, width, 40)];
-    sbView.backgroundColor = [UIColor grayColor];
-    sbView.delegate = self;
-    [self.view addSubview:sbView];
+    self.sbView = [[AHScrollButtonsView alloc] initWithFrame:CGRectMake(0, 100, width-100, 40)];
+    _sbView.backgroundColor = [UIColor grayColor];
+    _sbView.delegate = self;
+    _sbView.sbDelegate = self;
+    [self.view addSubview:_sbView];
     
-    UIEdgeInsets inset = sbView.contentInset;
-    inset.left = 100;
+//    UIEdgeInsets inset = _sbView.contentInset;
+//    inset.left = 100;
+//    
+//    CGPoint offset = _sbView.contentOffset;
+//    offset.x = -50;
+//    _sbView.contentOffset = offset;
+//    _sbView.contentInset = inset;
     
-    CGPoint offset = sbView.contentOffset;
-    offset.x = -50;
-    sbView.contentOffset = offset;
-    sbView.contentInset = inset;
-    
-    [sbView resetButtonTitles:@[@"外观\n(200)",@"内饰",@"网友",@"座椅",@"挂饰",@"其他",@"评测",@"图解"] buttonWidth:60.];
-//    [sbView resetSelectedIndex:4];
+    [_sbView resetButtonTitles:@[@"外观\n(200)",@"内饰",@"网友",@"座椅"] buttonWidth:60.];
+//    [_sbView resetSelectedIndex:4];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,12 +45,22 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    UIEdgeInsets inset =  scrollView.contentInset;
-    NSLog(@"%@",NSStringFromUIEdgeInsets(inset));
     
-    CGPoint point = scrollView.contentOffset;
-    NSLog(@"%@",NSStringFromCGPoint(point));
+}
+static BOOL isOpen = NO;
+-(void)didSelectedIndex:(NSUInteger)index
+{
+    isOpen = !isOpen;
+ 
+    float width = self.view.frame.size.width;
+    if (isOpen) {
+        self.sbView.frame = CGRectMake(0, 200, width, 40);
+        
+    }else{
+        self.sbView.frame = CGRectMake(0, 100, width-100, 40);
+    }
     
+    NSLog(@"--didSelectedIndex---");
 }
 
 @end
