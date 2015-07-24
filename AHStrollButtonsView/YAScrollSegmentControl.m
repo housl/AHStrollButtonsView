@@ -26,13 +26,7 @@ static const CGFloat defaultGradientPercentage = 0.2;
 @property (nonatomic, strong) UIView *leftMask;
 @property (nonatomic, strong) UIView *rightMask;
 
-@property (nonatomic, strong) IBInspectable UIColor *buttonColor;
-@property (nonatomic, strong) IBInspectable UIColor *buttonHighlightColor;
-@property (nonatomic, strong) IBInspectable UIColor *buttonSelectedColor;
 
-@property (nonatomic, strong) IBInspectable UIImage *buttonBackgroundImage;
-@property (nonatomic, strong) IBInspectable UIImage *buttonHighlightedBackgroundImage;
-@property (nonatomic, strong) IBInspectable UIImage *buttonSelectedBackgroundImage;
 
 @property (nonatomic, strong) UIFont *buttonFont;
 
@@ -81,6 +75,15 @@ static const CGFloat defaultGradientPercentage = 0.2;
     if (maxX < self.frame.size.width) {
         self.scrollView.contentInset = UIEdgeInsetsMake(0, (self.frame.size.width - maxX) / 2, 0, 0);
     }
+    float x = maxX;
+    self.scrollView.contentSize = CGSizeMake(x, self.frame.size.height);
+    
+    if (x <= self.frame.size.width) {
+        self.scrollView.contentInset = UIEdgeInsetsMake(0, (self.frame.size.width - x) / 2, 0, 0);
+    } else {
+        self.scrollView.contentInset = UIEdgeInsetsZero;
+    }
+    
 }
 
 #pragma mark - general setup

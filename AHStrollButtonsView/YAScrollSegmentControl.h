@@ -27,6 +27,15 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable CGFloat gradientPercentage;
 @property (nonatomic, strong) IBInspectable UIColor *gradientColor;
 
+@property (nonatomic, strong) IBInspectable UIColor *buttonColor;
+@property (nonatomic, strong) IBInspectable UIColor *buttonHighlightColor;
+@property (nonatomic, strong) IBInspectable UIColor *buttonSelectedColor;
+
+@property (nonatomic, strong) IBInspectable UIImage *buttonBackgroundImage;
+@property (nonatomic, strong) IBInspectable UIImage *buttonHighlightedBackgroundImage;
+@property (nonatomic, strong) IBInspectable UIImage *buttonSelectedBackgroundImage;
+
+
 @property (nonatomic, assign) NSInteger selectedIndex;
 
 @property (nonatomic, weak) IBOutlet id <YAScrollSegmentControlDelegate> delegate;
