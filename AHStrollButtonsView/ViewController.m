@@ -41,7 +41,8 @@
 
     
     self.yaView = [[YAScrollSegmentControl alloc] initWithFrame:CGRectMake(0, 300, width, 50)];
-    self.yaView.buttons = @[@"外观\n(200)",@"内饰",@"网友",@"座椅",@"外观\n(200)",@"内饰",@"网友",@"座椅"];
+    self.yaView.buttons = @[@"外观\n(200)",@"内饰内饰内饰",@"网友",@"座椅",@"外观\n(200)",@"内饰",@"网友",@"座椅"];
+//    self.yaView.buttons = @[@"外观\n(200)",@"内饰内饰内饰",@"网友",@"座椅"];
     _yaView.delegate = self;
     _yaView.buttonHighlightColor = [UIColor redColor];
     _yaView.buttonSelectedColor = [UIColor redColor];

@@ -16,6 +16,7 @@
 		2FA2686A1B58D2FC00C441D8 /* AHStrollButtonsViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA268691B58D2FC00C441D8 /* AHStrollButtonsViewTests.m */; };
 		2FA268751B58D31000C441D8 /* AHScrollButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA268741B58D31000C441D8 /* AHScrollButtonsView.m */; };
 		2FAB1A5D1B62277900CDC16D /* YAScrollSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB1A5C1B62277900CDC16D /* YAScrollSegmentControl.m */; };
+		2FAB1A601B6237F800CDC16D /* AHScrollButtonsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB1A5F1B6237F800CDC16D /* AHScrollButtonsControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		2FA268741B58D31000C441D8 /* AHScrollButtonsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHScrollButtonsView.m; sourceTree = "<group>"; };
 		2FAB1A5B1B62277900CDC16D /* YAScrollSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAScrollSegmentControl.h; sourceTree = "<group>"; };
 		2FAB1A5C1B62277900CDC16D /* YAScrollSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAScrollSegmentControl.m; sourceTree = "<group>"; };
+		2FAB1A5E1B6237F800CDC16D /* AHScrollButtonsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHScrollButtonsControl.h; sourceTree = "<group>"; };
+		2FAB1A5F1B6237F800CDC16D /* AHScrollButtonsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHScrollButtonsControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				2FA268521B58D2FC00C441D8 /* AppDelegate.m */,
 				2FA268541B58D2FC00C441D8 /* ViewController.h */,
 				2FA268551B58D2FC00C441D8 /* ViewController.m */,
+				2FAB1A5E1B6237F800CDC16D /* AHScrollButtonsControl.h */,
+				2FAB1A5F1B6237F800CDC16D /* AHScrollButtonsControl.m */,
 				2FA268571B58D2FC00C441D8 /* Main.storyboard */,
 				2FA2685A1B58D2FC00C441D8 /* Images.xcassets */,
 				2FA2685C1B58D2FC00C441D8 /* LaunchScreen.xib */,
@@ -234,6 +239,7 @@
 				2FA268751B58D31000C441D8 /* AHScrollButtonsView.m in Sources */,
 				2FAB1A5D1B62277900CDC16D /* YAScrollSegmentControl.m in Sources */,
 				2FA268501B58D2FC00C441D8 /* main.m in Sources */,
+				2FAB1A601B6237F800CDC16D /* AHScrollButtonsControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
