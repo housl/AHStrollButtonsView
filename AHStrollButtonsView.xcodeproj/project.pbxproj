@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F451EC01B661D8300B794E3 /* YAGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F451EBF1B661D8300B794E3 /* YAGradientLayer.m */; };
 		2FA268501B58D2FC00C441D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2684F1B58D2FC00C441D8 /* main.m */; };
 		2FA268531B58D2FC00C441D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA268521B58D2FC00C441D8 /* AppDelegate.m */; };
 		2FA268561B58D2FC00C441D8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FA268551B58D2FC00C441D8 /* ViewController.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F451EBE1B661D8300B794E3 /* YAGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAGradientLayer.h; sourceTree = "<group>"; };
+		2F451EBF1B661D8300B794E3 /* YAGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAGradientLayer.m; sourceTree = "<group>"; };
 		2FA2684A1B58D2FC00C441D8 /* AHStrollButtonsView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AHStrollButtonsView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FA2684E1B58D2FC00C441D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FA2684F1B58D2FC00C441D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 		2FA2684C1B58D2FC00C441D8 /* AHStrollButtonsView */ = {
 			isa = PBXGroup;
 			children = (
+				2F451EBE1B661D8300B794E3 /* YAGradientLayer.h */,
+				2F451EBF1B661D8300B794E3 /* YAGradientLayer.m */,
 				2FAB1A5B1B62277900CDC16D /* YAScrollSegmentControl.h */,
 				2FAB1A5C1B62277900CDC16D /* YAScrollSegmentControl.m */,
 				2FA268731B58D31000C441D8 /* AHScrollButtonsView.h */,
@@ -238,6 +243,7 @@
 				2FA268531B58D2FC00C441D8 /* AppDelegate.m in Sources */,
 				2FA268751B58D31000C441D8 /* AHScrollButtonsView.m in Sources */,
 				2FAB1A5D1B62277900CDC16D /* YAScrollSegmentControl.m in Sources */,
+				2F451EC01B661D8300B794E3 /* YAGradientLayer.m in Sources */,
 				2FA268501B58D2FC00C441D8 /* main.m in Sources */,
 				2FAB1A601B6237F800CDC16D /* AHScrollButtonsControl.m in Sources */,
 			);

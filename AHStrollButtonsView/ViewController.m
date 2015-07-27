@@ -10,6 +10,8 @@
 #import "AHScrollButtonsView.h"
 #import "YAScrollSegmentControl.h"
 
+#import "YAGradientLayer.h"
+
 @interface ViewController ()<UIScrollViewDelegate,AHScrollButtonsViewDelegate,YAScrollSegmentControlDelegate>
 @property (nonatomic, strong) AHScrollButtonsView *sbView;
 
@@ -46,7 +48,27 @@
     [self.view addSubview:_yaView];
     
     
+    YAGradientLayer *lay = [[YAGradientLayer alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 5)];
+    [self.view addSubview:lay];
+    lay.progress = 0.5;
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        lay.progress = 0.2;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            lay.progress = 0.4;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                lay.progress = 0.6;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    lay.progress = 1.0;
+                    
+                });
+                
+            });
+            
+        });
+        
+    });
     
 }
 
