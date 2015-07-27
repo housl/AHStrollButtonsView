@@ -195,7 +195,9 @@ static const CGFloat defaultGradientPercentage = 0.2;
 -(void)resetSelectedIndexNoDelegate:(NSUInteger)selectedIndex
 {
 
-    if ([self.scrollView viewWithTag:selectedIndex] && [[self.scrollView viewWithTag:selectedIndex] isKindOfClass:[UIButton class]]) {
+    if ([self.scrollView viewWithTag:selectedIndex] &&
+        [[self.scrollView viewWithTag:selectedIndex] isKindOfClass:[UIButton class]])
+    {
         _selectedIndex = selectedIndex;
         
         UIButton *activeButton = (UIButton *)[self.scrollView viewWithTag:selectedIndex];
@@ -204,7 +206,11 @@ static const CGFloat defaultGradientPercentage = 0.2;
         if (1) {
             UIButton *sender = activeButton;
             
-            if (sender.tag == self.selectedIndex && sender.selected) return;
+            if (sender.tag == self.selectedIndex && sender.selected) {
+                [self scrollItemVisible:sender];
+                
+                return;
+            }
             
             for (UIButton *button in self.scrollView.subviews) {
                 if (![button isKindOfClass:[UIButton class]]) continue;
@@ -226,15 +232,6 @@ static const CGFloat defaultGradientPercentage = 0.2;
     
 }
 
-- (void)setSelectedIndex:(NSInteger)selectedIndex
-{
-    if ([self.scrollView viewWithTag:selectedIndex] && [[self.scrollView viewWithTag:selectedIndex] isKindOfClass:[UIButton class]]) {
-        _selectedIndex = selectedIndex;
-        
-        UIButton *activeButton = (UIButton *)[self.scrollView viewWithTag:selectedIndex];
-        [self buttonSelect:activeButton];
-    }
-}
 
 //刷新按钮
 - (void)setButtons:(NSArray *)buttons

@@ -25,7 +25,7 @@
     [super viewDidLoad];
 
     float width = self.view.frame.size.width;
-    self.sbView = [[AHScrollButtonsView alloc] initWithFrame:CGRectMake(0, 100, width-100, 40)];
+    self.sbView = [[AHScrollButtonsView alloc] initWithFrame:CGRectMake(0, 100, width, 40)];
     _sbView.backgroundColor = [UIColor grayColor];
     _sbView.delegate = self;
     [self.view addSubview:_sbView];
@@ -85,17 +85,17 @@
 static BOOL isOpen = NO;
 -(void)didSelectedIndex:(NSUInteger)index
 {
-    isOpen = !isOpen;
- 
-    float width = self.view.frame.size.width;
-    if (isOpen) {
-        self.sbView.frame = CGRectMake(0, 200, width, 40);
-        
-    }else{
-        self.sbView.frame = CGRectMake(0, 100, width-100, 40);
-    }
-    
-    NSLog(@"--didSelectedIndex---");
+//    isOpen = !isOpen;
+// 
+//    float width = self.view.frame.size.width;
+//    if (isOpen) {
+//        self.sbView.frame = CGRectMake(0, 200, width, 40);
+//        
+//    }else{
+//        self.sbView.frame = CGRectMake(0, 100, width-100, 40);
+//    }
+//    
+//    NSLog(@"--didSelectedIndex---");
 }
 
 
@@ -113,10 +113,15 @@ static BOOL isOpen = NO;
     [super viewWillLayoutSubviews];
     
     [self layoutVisiblePages];
+    
+    
 }
 
 - (void)layoutVisiblePages {
-    self.yaView.frame = [self frameForTypebarAtOrientation:self.interfaceOrientation];
+    self.yaView.frame = [self frameForTypebarAtOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
+    CGRect rect = self.yaView.frame;
+    rect.origin.y-=100;
+    self.sbView.frame = rect;
 }
 
 
