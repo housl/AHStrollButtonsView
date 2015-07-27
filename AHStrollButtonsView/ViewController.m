@@ -30,7 +30,7 @@
     _sbView.delegate = self;
     [self.view addSubview:_sbView];
     
-    _sbView.buttons = @[@"外观\n(200)",@"内饰内饰内饰",@"网友",@"座椅",@"外观\n(200)",@"内饰",@"网友",@"座椅"];
+    _sbView.buttons = @[@"外观\n(200)",@"内饰",@"网友",@"座椅",@"外观\n(200)",@"内饰",@"网友",@"座椅"];
     [_sbView setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     
     [_sbView setBackgroundImage:[UIImage imageNamed:@"background"] forState:UIControlStateNormal];

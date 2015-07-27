@@ -6,6 +6,8 @@
 //  Copyright (c) 2015年 ATHM. All rights reserved.
 //
 
+#define RGBRandom                           [UIColor colorWithRed:(arc4random()%255)/255.f green:(arc4random()%255)/255.f blue:(arc4random()%255)/255.f alpha:1.f]
+
 #import <UIKit/UIKit.h>
 #import "AHScrollButtonsView.h"
 
@@ -252,6 +254,17 @@ static const CGFloat defaultGradientPercentage = 0.2;
         [button addTarget:self action:@selector(buttonSelect:) forControlEvents:UIControlEventTouchUpInside];
         [button sizeToFit];
         
+        int sysVersion = [[[UIDevice currentDevice] systemVersion] intValue];
+        BOOL isIOS7 = sysVersion >= 7;
+        
+        if(!isIOS7){
+            if ([title rangeOfString:@"\n"].location != NSNotFound) {
+                CGRect rect = button.frame;
+                rect.size.width = rect.size.width/2;
+                button.frame = rect;
+            }
+        }
+        
         if (self.buttonFont) {
             button.titleLabel.font = self.buttonFont;
         }
@@ -276,7 +289,7 @@ static const CGFloat defaultGradientPercentage = 0.2;
         
         button.frame = (CGRect){button.frame.origin, {button.frame.size.width + (self.edgeMargin * 2), self.frame.size.height}};
         x = CGRectGetMaxX(button.frame);
-        
+//        button.backgroundColor = RGBRandom;
         [self.scrollView addSubview:button];
     }
     
