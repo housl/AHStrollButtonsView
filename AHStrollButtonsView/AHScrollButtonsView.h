@@ -6,37 +6,44 @@
 //  Copyright (c) 2015年 ATHM. All rights reserved.
 //
 
-#define AH_BUTTON_WIDTH            50.0
-#define AH_BUTTON_SPACE            4.0
-
 #import <UIKit/UIKit.h>
 
 @protocol AHScrollButtonsViewDelegate <NSObject>
 
--(void)didSelectedIndex:(NSUInteger)index;
+@required
+- (void)didSelectedIndex:(NSInteger)index;
 
 @end
 
-/**
- *  图片页面使用可滑动的按钮组合
- */
-@interface AHScrollButtonsView : UIScrollView
 
-@property(nonatomic,assign)id<AHScrollButtonsViewDelegate> sbDelegate;
+@interface AHScrollButtonsView : UIControl
 
--(void)resetButtonTitles:(NSArray *)titles buttonWidth:(float)width;
+@property (nonatomic, strong) NSArray *buttons;
 
--(void)resetSelectedIndex:(NSUInteger)index;
+@property (nonatomic, assign)  CGFloat edgeMargin;
+@property (nonatomic, assign)  CGFloat gradientScrollOffset;
+@property (nonatomic, assign)  CGFloat gradientPercentage;
+@property (nonatomic, strong)  UIColor *gradientColor;
 
--(NSUInteger)currentIndex;
+
+
+@property (nonatomic, assign) id <AHScrollButtonsViewDelegate> delegate;
+
+- (id)initWithFrame:(CGRect)frame;
 /**
  *  设置颜色
  *
- *  @param scolor 选中颜色
- *  @param ncolor 普通颜色
+ *  @param color
+ *  @param state
  */
--(void)resetSelectedColor:(UIColor *)scolor normalColor:(UIColor *)ncolor;
+- (void)setTitleColor:(UIColor *)color forState:(UIControlState)state;
+- (void)setBackgroundImage:(UIImage *)image forState:(UIControlState)state;
+- (void)setFont:(UIFont *)font;     
 
+//获取当前选中的index
+-(NSUInteger)currentIndex;
+
+//重新设置index
+-(void)resetSelectedIndex:(NSUInteger)index;
 
 @end
-

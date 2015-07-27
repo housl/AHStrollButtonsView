@@ -26,31 +26,21 @@
     self.sbView = [[AHScrollButtonsView alloc] initWithFrame:CGRectMake(0, 100, width-100, 40)];
     _sbView.backgroundColor = [UIColor grayColor];
     _sbView.delegate = self;
-    _sbView.sbDelegate = self;
     [self.view addSubview:_sbView];
     
-//    UIEdgeInsets inset = _sbView.contentInset;
-//    inset.left = 100;
-//    
-//    CGPoint offset = _sbView.contentOffset;
-//    offset.x = -50;
-//    _sbView.contentOffset = offset;
-//    _sbView.contentInset = inset;
+    _sbView.buttons = @[@"外观\n(200)",@"内饰内饰内饰",@"网友",@"座椅",@"外观\n(200)",@"内饰",@"网友",@"座椅"];
+    [_sbView setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
     
-    [_sbView resetButtonTitles:@[@"外观\n(200)",@"内饰",@"网友",@"座椅"] buttonWidth:60.];
-
+    [_sbView setBackgroundImage:[UIImage imageNamed:@"background"] forState:UIControlStateNormal];
+    [_sbView setBackgroundImage:[UIImage imageNamed:@"backgroundSelected"] forState:UIControlStateSelected];
+    
+    
     
     self.yaView = [[YAScrollSegmentControl alloc] initWithFrame:CGRectMake(0, 300, width, 50)];
     self.yaView.buttons = @[@"外观\n(200)",@"内饰内饰内饰",@"网友",@"座椅",@"外观\n(200)",@"内饰",@"网友",@"座椅"];
-//    self.yaView.buttons = @[@"外观\n(200)",@"内饰内饰内饰",@"网友",@"座椅"];
     _yaView.delegate = self;
-    _yaView.buttonHighlightColor = [UIColor redColor];
-    _yaView.buttonSelectedColor = [UIColor redColor];
-    _yaView.gradientColor = [UIColor grayColor];
     [_yaView setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-    
-//    [_yaView setBackgroundImage:[UIImage imageNamed:@"background"] forState:UIControlStateNormal];
-//    [_yaView setBackgroundImage:[UIImage imageNamed:@"backgroundSelected"] forState:UIControlStateSelected];
+    _yaView.gradientColor = [UIColor grayColor];
     
     _yaView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:_yaView];

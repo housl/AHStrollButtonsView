@@ -210,6 +210,7 @@ static const CGFloat defaultGradientPercentage = 0.2;
         NSString *title = self.buttons[i];
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, 0, 20, self.frame.size.height)];
         button.tag = i;
+        button.titleLabel.numberOfLines = 0;
         [button setTitleColor:self.buttonColor forState:UIControlStateNormal];
         [button setTitle:title forState:UIControlStateNormal];
         [button addTarget:self action:@selector(buttonSelect:) forControlEvents:UIControlEventTouchUpInside];
