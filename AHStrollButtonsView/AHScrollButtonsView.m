@@ -6,8 +6,6 @@
 //  Copyright (c) 2015年 ATHM. All rights reserved.
 //
 
-#define RGBRandom                           [UIColor colorWithRed:(arc4random()%255)/255.f green:(arc4random()%255)/255.f blue:(arc4random()%255)/255.f alpha:1.f]
-
 #import <UIKit/UIKit.h>
 #import "AHScrollButtonsView.h"
 
@@ -65,9 +63,9 @@ static const CGFloat defaultGradientPercentage = 0.2;
     self.scrollView.frame = self.bounds;
     [self resetMaskView];
     [self updateGradientsForScrollView:self.scrollView];
-//    [self setSelectedIndex:self.selectedIndex];
+    //    [self setSelectedIndex:self.selectedIndex];
     [self resetSelectedIndexNoDelegate:self.selectedIndex];
-//    self.backgroundColor = [UIColor colorWithPatternImage:self.buttonBackgroundImage];
+    self.backgroundColor = [UIColor colorWithPatternImage:self.buttonBackgroundImage];
     
     CGFloat maxX = 0;
     for (UIButton *button in self.scrollView.subviews) {
@@ -196,7 +194,7 @@ static const CGFloat defaultGradientPercentage = 0.2;
 
 -(void)resetSelectedIndexNoDelegate:(NSUInteger)selectedIndex
 {
-
+    
     if ([self.scrollView viewWithTag:selectedIndex] &&
         [[self.scrollView viewWithTag:selectedIndex] isKindOfClass:[UIButton class]])
     {
@@ -204,7 +202,6 @@ static const CGFloat defaultGradientPercentage = 0.2;
         
         UIButton *activeButton = (UIButton *)[self.scrollView viewWithTag:selectedIndex];
         
-        //        [self buttonSelect:activeButton];
         if (1) {
             UIButton *sender = activeButton;
             
@@ -234,7 +231,6 @@ static const CGFloat defaultGradientPercentage = 0.2;
     
 }
 
-
 //刷新按钮
 - (void)setButtons:(NSArray *)buttons
 {
@@ -255,15 +251,16 @@ static const CGFloat defaultGradientPercentage = 0.2;
         [button sizeToFit];
         
         int sysVersion = [[[UIDevice currentDevice] systemVersion] intValue];
-        BOOL isIOS7 = sysVersion >= 7;
+        BOOL isIOS7__ = sysVersion >= 7;
         
-        if(!isIOS7){
+        if(!isIOS7__){
             if ([title rangeOfString:@"\n"].location != NSNotFound) {
                 CGRect rect = button.frame;
                 rect.size.width = rect.size.width/2;
                 button.frame = rect;
             }
         }
+        
         
         if (self.buttonFont) {
             button.titleLabel.font = self.buttonFont;
@@ -289,7 +286,7 @@ static const CGFloat defaultGradientPercentage = 0.2;
         
         button.frame = (CGRect){button.frame.origin, {button.frame.size.width + (self.edgeMargin * 2), self.frame.size.height}};
         x = CGRectGetMaxX(button.frame);
-//        button.backgroundColor = RGBRandom;
+        
         [self.scrollView addSubview:button];
     }
     
@@ -303,7 +300,6 @@ static const CGFloat defaultGradientPercentage = 0.2;
     
     [self updateGradientsForScrollView:self.scrollView];
     
-//    [self setSelectedIndex:self.selectedIndex];
     [self resetSelectedIndexNoDelegate:self.selectedIndex];
 }
 
@@ -325,13 +321,17 @@ static const CGFloat defaultGradientPercentage = 0.2;
     
     sender.selected = YES;
     
+    _selectedIndex = sender.tag;
+    [self scrollItemVisible:sender];
+    
+    [self performSelector:@selector(notificationDelegate:) withObject:sender afterDelay:0.0];
+}
+
+-(void)notificationDelegate:(UIButton *)sender
+{
     if ([self.delegate respondsToSelector:@selector(didSelectedIndex:)]) {
         [self.delegate didSelectedIndex:sender.tag];
     }
-    
-    _selectedIndex = sender.tag;
-    
-    [self scrollItemVisible:sender];
 }
 
 #pragma mark - scrollview delegate
