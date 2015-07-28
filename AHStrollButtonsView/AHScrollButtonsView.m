@@ -67,7 +67,7 @@ static const CGFloat defaultGradientPercentage = 0.2;
     [self updateGradientsForScrollView:self.scrollView];
 //    [self setSelectedIndex:self.selectedIndex];
     [self resetSelectedIndexNoDelegate:self.selectedIndex];
-    self.backgroundColor = [UIColor colorWithPatternImage:self.buttonBackgroundImage];
+//    self.backgroundColor = [UIColor colorWithPatternImage:self.buttonBackgroundImage];
     
     CGFloat maxX = 0;
     for (UIButton *button in self.scrollView.subviews) {
